@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES2020", // Modern JS target, compatible with recent Node.js versions
+        "module": "NodeNext", // For Node.js ESM compatibility; use "CommonJS" for older Node.js
+        "outDir": "./dist", // Output directory for compiled JS files
+        "rootDir": "./src", // Source directory for TS files
+        "strict": true, // Enables all strict type-checking options
+        "esModuleInterop": true, // Better interop between CommonJS and ESM
+        "skipLibCheck": true, // Speeds up compilation by skipping library type checks
+        "forceConsistentCasingInFileNames": true, // Prevents case-related import issues
+        "moduleResolution": "NodeNext", // Matches "module" setting for Node.js resolution
+        "resolveJsonModule": true, // Allows importing JSON files
+        "isolatedModules": true, // Ensures compatibility with tools like Babel or esbuild
+        "noEmitOnError": true, // Prevents output if there are errors
+        "sourceMap": true, // Generates source maps for debugging
+        "types": ["node"]
+    },
+    "include": [
+        "src/**/*"
+    ], // Includes all TS files in the src folder
+    "exclude": [
+        "node_modules",
+        "dist"
+    ] // Excludes these directories from compilation
+}
