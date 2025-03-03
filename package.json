@@ -4,5 +4,17 @@
   "description": "CLI utilities for common used commands with graphite cli",
   "main": "index.js",
   "author": "Max Evan <max.evangeliste@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "execute": "yarn esno src/index.ts"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.13.8",
+    "@types/prompts": "^2.4.9",
+    "esno": "^4.8.0"
+  }
 }
