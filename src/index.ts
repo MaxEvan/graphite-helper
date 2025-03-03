@@ -5,27 +5,33 @@ import prompt from 'prompts';
 const graphitePath = '/opt/homebrew/bin/gt';
 
 async function main() {
+  const choices = [
+    {
+      title: 'checkout (switch branch)',
+      value: 'checkout',
+    },
+    { title: 'create (new stack with commit message)', value: 'create' },
+    {
+      title: 'log (see the state of your repo)',
+      value: 'log',
+    },
+    {
+      title: 'pop (delete active branch but keep changes)',
+      value: 'pop',
+    },
+    { title: 'submit (push branch to graphite)', value: 'submit' },
+    { title: 'sync (rebase with remote origin)', value: 'sync' },
+  ];
+
   const { command } = (await prompt([
     {
       type: 'autocomplete',
       name: 'command',
       message: 'What graphite command would you like to run?',
-      choices: [
-        { title: '1. create (new stack with commit message)', value: 'create' },
-        { title: '2. sync (rebase with remote origin)', value: 'sync' },
-        {
-          title: '3. checkout (switch branch)',
-          value: 'checkout',
-        },
-        {
-          title: '4. pop (delete active branch but keep changes)',
-          value: 'pop',
-        },
-        {
-          title: '5. log (see the state of your repo)',
-          value: 'log',
-        },
-      ],
+      choices: choices.map((choice, index) => ({
+        title: `${index + 1}. ${choice.title}`,
+        value: choice.value,
+      })),
     },
   ])) as { command: GraphiteCommand };
 
@@ -60,12 +66,17 @@ const pop = async () => {
   runGraphiteCommand(['pop']);
 };
 
+const submit = async () => {
+  runGraphiteCommand(['submit']);
+};
+
 const commands = {
-  create,
-  sync,
   checkout,
-  pop,
+  create,
   log,
+  pop,
+  submit,
+  sync,
 } as const;
 
 type GraphiteCommand = keyof typeof commands;
