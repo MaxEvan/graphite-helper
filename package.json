@@ -1,7 +1,7 @@
 {
-  "name": "graphite-utils",
+  "name": "graphite-helper",
   "version": "0.0.1",
-  "description": "CLI utilities for common used commands with graphite cli",
+  "description": "CLI menu helper for common used commands with graphite cli",
   "main": "index.js",
   "author": "Max Evan <max.evangeliste@gmail.com>",
   "license": "MIT",
