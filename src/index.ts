@@ -4,32 +4,32 @@ import prompt from 'prompts';
 
 const graphitePath = '/opt/homebrew/bin/gt';
 
-async function main() {
-  const choices = [
-    {
-      title: 'checkout (switch branch)',
-      value: 'checkout',
-    },
-    { title: 'create (new stack with commit message)', value: 'create' },
-    {
-      title: 'log (see the state of your repo)',
-      value: 'log',
-    },
-    {
-      title: 'pop (delete active branch but keep changes)',
-      value: 'pop',
-    },
-    { title: 'submit (push branch to graphite)', value: 'submit' },
-    { title: 'sync (rebase with remote origin)', value: 'sync' },
-  ];
+const choices = [
+  {
+    title: 'co: checkout (switch branch)',
+    value: 'checkout',
+  },
+  { title: 'c: create (new stack with commit message)', value: 'create' },
+  {
+    title: 'l: log (see the state of your repo)',
+    value: 'log',
+  },
+  {
+    title: 'p: pop (delete active branch but keep changes)',
+    value: 'pop',
+  },
+  { title: 'u: submit (push branch to graphite)', value: 'submit' },
+  { title: 's: sync (rebase with remote origin)', value: 'sync' },
+];
 
+async function main() {
   const { command } = (await prompt([
     {
       type: 'autocomplete',
       name: 'command',
       message: 'What graphite command would you like to run?',
       choices: choices.map((choice, index) => ({
-        title: `${index + 1}. ${choice.title}`,
+        title: choice.title,
         value: choice.value,
       })),
     },
