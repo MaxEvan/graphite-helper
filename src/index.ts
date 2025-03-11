@@ -1,25 +1,26 @@
 import { spawnSync } from 'node:child_process';
-// import { prompt } from 'prompts';
 import prompt from 'prompts';
 
 const graphitePath = '/opt/homebrew/bin/gt';
 
 const choices = [
-  {
-    title: 'co: checkout (switch branch)',
-    value: 'checkout',
-  },
   { title: 'c: create (new stack with commit message)', value: 'create' },
   {
     title: 'l: log (see the state of your repo)',
     value: 'log',
   },
+  { title: 'm: modify (add changes to active branch)', value: 'modify' },
+  {
+    title: 'o: checkout (switch branch)',
+    value: 'checkout',
+  },
+
   {
     title: 'p: pop (delete active branch but keep changes)',
     value: 'pop',
   },
-  { title: 'u: submit (push branch to graphite)', value: 'submit' },
   { title: 's: sync (rebase with remote origin)', value: 'sync' },
+  { title: 'u: submit (push branch to graphite)', value: 'submit' },
 ];
 
 async function main() {
@@ -54,6 +55,10 @@ const log = async () => {
   runGraphiteCommand(['log']);
 };
 
+const modify = async () => {
+  runGraphiteCommand(['modify']);
+};
+
 const sync = async () => {
   runGraphiteCommand(['sync']);
 };
@@ -74,6 +79,7 @@ const commands = {
   checkout,
   create,
   log,
+  modify,
   pop,
   submit,
   sync,
